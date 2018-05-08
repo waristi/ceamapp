@@ -194,5 +194,53 @@ describe('Programa', function () {
 			})
 	})
 
+
+	it('GET / Programa', function (done) {
+		request(app)
+			.get("/api/programa")
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+})
+
+
+//INVESTIGADOR
+describe('Investigador', function(){
+
+	var id = "";
+
+	it('POST / Investigador', function(done){
+		request(app)
+		.post("/api/investigador")
+		.send({documento: 'Prueba Mocha'})	
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.CREATED)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			id = res.body.id;
+			done();
+		})
+	})
+
+
+	it('GET / Investigador', function(done){
+		request(app)
+		.get("/api/investigador")
+		.set('Authorization', 'Bearer ' +  token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
 })
 
