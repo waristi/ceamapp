@@ -115,5 +115,63 @@ describe('Facultad', function(){
 
 
 
+//ENTIDAD
+describe('Entidad', function(){
+
+	var id = "";
+
+	it('POST / Entidad', function(done){
+		request(app)
+		.post("/api/entidad")
+		.send({nombre: 'Prueba Mocha'})	
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.CREATED)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			id = res.body.id;
+			done();
+		})
+	})
+
+
+	it('GET / Entidad', function(done){
+		request(app)
+		.get("/api/entidad")
+		.set('Authorization', 'Bearer ' +  token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+
+	it('PUT / Entidad', function(done){
+		request(app)
+		.put("/api/entidad/" + id)
+		.send({nombre: 'Prueba Mocha Edit'})
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+	it('DELETE / Entidad', function(done){
+		request(app)
+		.put("/api/entidad/" + id)
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+})
 
 

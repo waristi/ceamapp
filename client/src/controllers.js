@@ -185,6 +185,7 @@ angular.module('appWeb.controllers', [])
 		})
 	}
 
+
 	
 	//OBTIENE LA LISTA DE PROGRAMA
 	var getAll = function(){
@@ -282,7 +283,112 @@ angular.module('appWeb.controllers', [])
 })
 
 
-//CONTROLADOR PROGRAMA
+//CONTROLADOR ENTIDAD
+.controller('EntidadCtrl', function($scope, $state, Auth, ApiService, CONFIG){
+
+	$scope.dataEntidad = {};
+	$scope.alert = "";
+	
+
+	var url = CONFIG.DOMAIN + CONFIG.APIENTIDAD;
+	
+	//OBTIENE LA LISTA DE ENIDADES
+	var getAll = function(){
+		ApiService.get(url)
+		.then(function(data){
+			$scope.listaEntidades = data;
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})
+	}
+
+	//GUARDA UNA ENTIDAD
+	$scope.guardar = function(){
+		var call;
+
+		if($scope.dataEntidad._id)
+			call = ApiService.put(url  + "/" + $scope.dataEntidad._id, $scope.dataEntidad);
+		else
+			call = ApiService.post(url, $scope.dataEntidad);
+		
+		call.then(function(data){
+			$scope.dataEntidad = {};
+			getAll();
+
+			$scope.alert = data.message;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})	
+	}
+
+	//EDITA UNA ENTIDAD
+	$scope.editar = function(item){
+		$scope.dataEntidad= item;
+	}
+
+	//ELIMINA UNA ENTIDAD
+	$scope.eliminar = function(id){
+		ApiService.remove(url + "/" + id)
+		.then(function(data){
+			getAll();
+
+			$scope.alert = data.message;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})	
+	}
+
+	getAll();
+	
+})
+
+
+//CONTROLADOR GRUPO
 .controller('GrupoCtrl', function($scope, $state, Auth, ApiService, CONFIG){
 
 	$scope.dataGrupo = {};

@@ -81,6 +81,16 @@ angular.module('appWeb', ['ui.router', 'appWeb.controllers', 'appWeb.services', 
 		}
 	})	
 
+	.state('menu.entidad', {
+		url: '/entidad',
+		views: {
+			'tab-home': {
+				templateUrl: 'templates/entidad.html',
+				controller: 'EntidadCtrl'
+			}
+		}
+	})	
+
 
 	$urlRouterProvider.otherwise('/login');
 

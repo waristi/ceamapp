@@ -1,6 +1,5 @@
-var HttpStatus = require('http-status-codes');
-var express = require('express');
-var router = express.Router();
+var HttpStatus = require('http-status-codes'); var express =
+require('express'); var router = express.Router();
 
 var mongoose = require('mongoose');
 var Facultad = mongoose.model('Facultad');
