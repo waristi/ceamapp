@@ -8,4 +8,6 @@ angular.module('appWeb.constants', [])
     APIINVESTIGADOR: '/api/investigador',
     APIPROYECTO: '/api/proyecto',
     APIENTIDAD: '/api/entidad',
+    APIESTACION: '/api/estacion',
+	APIDATOSESTACION: '/api/datosEstacion',
 })

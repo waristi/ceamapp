@@ -91,6 +91,25 @@ angular.module('appWeb', ['ui.router', 'appWeb.controllers', 'appWeb.services', 
 		}
 	})	
 
+	.state('menu.estacion', {
+		url: '/estacion',
+		views: {
+			'tab-home': {
+				templateUrl: 'templates/estacion.html',
+				controller: 'EstacionCtrl'
+			}
+		}
+	})	
+
+	.state('menu.datosEstacion', {
+		url: '/datosEstacion',
+		views: {
+			'tab-home': {
+				templateUrl: 'templates/datosEstacion.html',
+				controller: 'DatosEstacionCtrl'
+			}
+		}
+	})	
 
 	$urlRouterProvider.otherwise('/login');
 
