@@ -7,11 +7,11 @@ before_script:
 script: 
   - "npm test "
 
-deploy:
-  - provider: s3
-  - provider: codedeploy
-    access_key_id: "6286-1210-0443"
-    secret_access_key: "4206431e0677064f9247796db1144ec9a4656962df494e560ae2d9f32467ec72"
-    bucket: "S3 Bucket"
-    key: latest/pruebas.zip
-    application: pruebas
+addons:
+  sonarcloud:
+    organization: "appceam-github" # the key of the org you chose at step #3
+    token:
+      secure: "833a5b9f41b56c13ab75b1db5f70b898fabbd42e" # encrypted value of your token
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
