@@ -244,3 +244,38 @@ describe('Investigador', function(){
 
 })
 
+//PROYECTO
+describe('Proyecto', function(){
+
+	var id = "";
+
+	it('POST / Proyecto', function(done){
+		request(app)
+		.post("/api/proyecto")
+		.send({nombre: 'Prueba Mocha'})	
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.CREATED)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			id = res.body.id;
+			done();
+		})
+	})
+
+
+	it('GET / Proyecto', function(done){
+		request(app)
+		.get("/api/proyecto")
+		.set('Authorization', 'Bearer ' +  token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+})
+
+
