@@ -3,15 +3,15 @@ node_js:
   - "node"
 services: mongodb
 
+before_script:
+  - "npm install"
+
 addons:
   sonarcloud:
     organization: "waristi-github" 
     token:
       secure: 833a5b9f41b56c13ab75b1db5f70b898fabbd42e 
 
-before_script:
-  - "npm install "
-
 script:
-  - "npm test "
+  - "npm test"
   - sonar-scanner
