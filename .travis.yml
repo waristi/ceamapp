@@ -18,6 +18,6 @@ script:
   -Dsonar.login=833a5b9f41b56c13ab75b1db5f70b898fabbd42e 
   -Dsonar.organization=waristi-github 
   -Dsonar.projectKey=ceamapp 
-  -Dsonar.exclusions= "./node_modules, ./client/assets, ./client/lib"
+  -Dsonar.exclusions= "./node_modules/**, ./client/assets/**, ./client/lib/**"
   -Dsonar.sources="./" -X
 
