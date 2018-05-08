@@ -49,6 +49,217 @@ angular.module('appWeb.controllers', [])
 	
 })
 
+
+//CONTROLADOR ESTACIÓN
+.controller('EstacionCtrl',  function($scope, $state, Auth, ApiService, CONFIG){
+
+
+	$scope.dataEstacion = {};
+	$scope.alert = "";
+	
+
+	var url = CONFIG.DOMAIN + CONFIG.APIESTACION;
+	
+	//OBTIENE LA LISTA DE ESTACIONES
+	var getAll = function(){
+		ApiService.get(url)
+		.then(function(data){
+			$scope.listaEstaciones = data;
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})
+	}
+
+	//GUARDA UNA ESTACIÓN
+	$scope.guardar = function(){
+		var call;
+
+		if($scope.dataEstacion._id)
+			call = ApiService.put(url  + "/" + $scope.dataEstacion._id, $scope.dataEstacion);
+		else
+			call = ApiService.post(url, $scope.dataEstacion);
+		
+		call.then(function(data){
+			$scope.dataEstacion = {};
+			getAll();
+
+			$scope.alert = data.message;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})	
+	}
+
+	//EDITA UNA ESTACIÓN
+	$scope.editar = function(item){
+		$scope.dataEstacion= item;
+	}
+
+	//ELIMINA UNA ESTACIÓN
+	$scope.eliminar = function(id){
+		ApiService.remove(url + "/" + id)
+		.then(function(data){
+			getAll();
+
+			$scope.alert = data.message;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})	
+	}
+
+	getAll();
+	
+})
+
+//CONTROLADOR DATOS ESTACIÓN
+.controller('DatosEstacionCtrl',  function($scope, $state, Auth, ApiService, CONFIG){
+
+
+	$scope.dataDatoEstacion = {};
+	$scope.alert = "";
+	
+
+	var url = CONFIG.DOMAIN + CONFIG.APIDATOSESTACION;
+	
+	//OBTIENE LA LISTA DE ESTACIONES
+	var getAll = function(){
+		ApiService.get(url)
+		.then(function(data){
+			$scope.listaDatosEstaciones = data;
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})
+	}
+
+	//GUARDA UNA ESTACIÓN
+	$scope.guardar = function(){
+		var call;
+
+		if($scope.dataDatoEstacion._id)
+			call = ApiService.put(url  + "/" + $scope.dataDatoEstacion._id, $scope.dataDatoEstacion);
+		else
+			call = ApiService.post(url, $scope.dataDatoEstacion);
+		
+		call.then(function(data){
+			$scope.dataDatoEstacion = {};
+			getAll();
+
+			$scope.alert = data.message;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})	
+	}
+
+	//EDITA UNA ESTACIÓN
+	$scope.editar = function(item){
+		$scope.dataDatoEstacion= item;
+	}
+
+	//ELIMINA UNA ESTACIÓN
+	$scope.eliminar = function(id){
+		ApiService.remove(url + "/" + id)
+		.then(function(data){
+			getAll();
+
+			$scope.alert = data.message;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+
+		})
+		.catch(function(e){
+			var mensaje = "";
+			if(e){
+				mensaje = e.error;
+			}else{
+				mensaje = "Error en el servidor";
+			}
+
+			$scope.alert = mensaje;
+			setTimeout(function(){
+				$scope.alert = "";
+				$scope.$apply();
+			}, 3000);
+		})	
+	}
+
+	getAll();
+	
+})
+
 //CONROLADOR FACULTAD
 .controller('FacultadCtrl', function($scope, $state, Auth, ApiService, CONFIG){
 	

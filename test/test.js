@@ -338,3 +338,126 @@ describe('GrupoInvestigacion', function(){
 	})
 })
 
+<<<<<<< HEAD
+=======
+
+//ESTACIÓN
+describe('Estacion', function(){
+
+	var id = "";
+
+	it('POST / Estacion', function(done){
+		request(app)
+		.post("/api/estacion")
+		.send({nombre: 'Prueba Mocha'})	
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.CREATED)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			id = res.body.id;
+			done();
+		})
+	})
+
+
+	it('GET / Estacion', function(done){
+		request(app)
+		.get("/api/estacion")
+		.set('Authorization', 'Bearer ' +  token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+
+	it('PUT / Estacion', function(done){
+		request(app)
+		.put("/api/estacion/" + id)
+		.send({nombre: 'Prueba Mocha Edit'})
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+	it('DELETE / Estacion', function(done){
+		request(app)
+		.put("/api/estacion/" + id)
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+})
+
+
+//DATOS ESTACIÓN
+describe('DatosEstacion', function(){
+
+	var id = "";
+
+	it('POST / DatosEstacion', function(done){
+		request(app)
+		.post("/api/DatosEstacion")
+		.send({nombre: 'Prueba Mocha'})	
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.CREATED)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			id = res.body.id;
+			done();
+		})
+	})
+
+
+	it('GET / DatosEstacion', function(done){
+		request(app)
+		.get("/api/DatosEstacion")
+		.set('Authorization', 'Bearer ' +  token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+/**
+	it('PUT / DatosEstacion', function(done){
+		request(app)
+		.put("/api/DatosEstacion/" + id)
+		.send({nombre: 'Prueba Mocha Edit'})
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+	it('DELETE / DatosEstacion', function(done){
+		request(app)
+		.put("/api/DatosEstacion/" + id)
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+	*/
+})
+>>>>>>> db097874793ba90b5040fd8236263e4da210065a

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
- 
+var Schema = mongoose.Schema; 
+
 var DatosEstacionSchema = new mongoose.Schema({
 	fecha: Date,
 	temperatura: Number,
@@ -26,7 +27,7 @@ var DatosEstacionSchema = new mongoose.Schema({
 	eiIndiceuv: Number,
 	diasGradoCalentamiento: Number,
 	diasGradoEnfriamiento: Number,
-	estacion:  { type: Schema.ObjectId, ref: 'Estacion' }
+	estacion: { type: Schema.ObjectId, ref: 'Estacion' }
 });
 
 mongoose.model('DatosEstacion', DatosEstacionSchema);
