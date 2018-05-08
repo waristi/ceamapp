@@ -183,7 +183,7 @@ describe('Programa', function () {
 	it('POST / Programa', function (done) {
 		request(app)
 			.post("/api/programa")
-			.send({ nombre: 'Prueba Mocha' })
+			.send({ nombre: 'Prueba Mocha'})
 			.set('Authorization', 'Bearer ' + token)
 			.expect(HttpStatus.CREATED)
 			.end(function (err, res) {
@@ -218,7 +218,7 @@ describe('Investigador', function(){
 	it('POST / Investigador', function(done){
 		request(app)
 		.post("/api/investigador")
-		.send({documento: 'Prueba Mocha'})	
+		.send({documento: 'Mocha', nombre: ' Prueba', correo: 'mocha@c.c'})	
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.CREATED)
 		.end(function(err, res){
@@ -227,7 +227,7 @@ describe('Investigador', function(){
 			id = res.body.id;
 			done();
 		})
-	})
+	})	
 
 
 	it('GET / Investigador', function(done){
@@ -278,4 +278,63 @@ describe('Proyecto', function(){
 
 })
 
+
+//GRUPOS DE INVESTIGACION
+describe('GrupoInvestigacion', function(){
+
+	var id = "";
+
+	it('POST / GrupoInvestigacion', function(done){
+		request(app)
+		.post("/api/grupoInvestigacion")
+		.send({nombre: 'Prueba Mocha'})	
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.CREATED)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			id = res.body.id;
+			done();
+		})
+	})
+
+
+	it('GET / GrupoInvestigacion', function(done){
+		request(app)
+		.get("/api/grupoInvestigacion")
+		.set('Authorization', 'Bearer ' +  token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+
+	it('PUT / GrupoInvestigacion', function(done){
+		request(app)
+		.put("/api/grupoInvestigacion/" + id)
+		.send({nombre: 'Prueba Mocha Edit'})
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+	it('DELETE / GrupoInvestigacion', function(done){
+		request(app)
+		.put("/api/grupoInvestigacion/" + id)
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+})
 
