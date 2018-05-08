@@ -1,0 +1,74 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<form class="card" ng-submit="guardar()">
+				<div class="card-header">
+                    <h3 class="card-title">Estación</h3>
+                </div>
+                <div class="card-body">
+                	<div class="row">
+                		<div class="col-12">
+                			
+	                        <div class="form-group">
+	                            <label class="form-label">Marca</label>
+	                            <input type="text" class="form-control" name="example-text-input" placeholder="Ingrese la marca de la Estación" ng-model="dataEstacion.marca" required="true">
+	                        </div>
+
+							<div class="form-group">
+	                            <label class="form-label">Ucicación</label>
+	                            <input type="text" class="form-control" name="example-text-input" placeholder="Ingrese la marca de la Estación" ng-model="dataEstacion.ubicacion" required="true">
+	                        </div>
+
+	                        <div class="form-group">
+	                            <label class="form-label">Longitud</label>
+	                            <input type="number" class="form-control" name="example-text-input" placeholder="Ingrese la longitud de la Estación" ng-model="dataEstacion.longitud" required="true">
+	                        </div> 
+
+	                         <div class="form-group">
+	                            <label class="form-label">Latitud</label>
+	                            <input type="number" class="form-control" name="example-text-input" placeholder="Ingrese la latitud de la Estación" ng-model="dataEstacion.latitud" required="true">
+	                        </div>
+	                        
+                		</div>
+                	</div>
+                </div>
+                <div class="card-footer text-right">
+                  <div class="d-flex">
+                    <button type="submit" class="btn btn-primary ml-auto">Guardar</button>
+                  </div>
+                </div>
+			</form>
+		</div>
+
+		<div class="col-lg-8">
+            <div class="alert alert-warning alert-dismissible" ng-show="alert != ''">
+            	{{ alert }}
+            </div>
+			<div class="card">
+				<div class="table-responsive">
+	                <table class="table card-table table-striped table-vcenter">
+	                  <thead>
+	                    <tr>
+	                      <th >Marca</th>
+	                      <th>Ubicación</th>
+	                      <th>Latitud</th>
+	                      <th>Longitud</th>
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+	                    <tr ng-repeat="item in listaEstaciones">
+ 	                      <td>{{ item.marca }}</td>
+	                      <td>{{ item.ubicacion }}</td>
+	                      <td>{{ item.latitud }}</td>
+	                      <td>{{ item.longitud }}</td>	                                            
+	                      <td class="w-1"><a class="icon"><i class="fe fe-edit" ng-click="editar(item)"></i></a></td>
+	                      <td class="w-1"><a class="icon"><i class="fe fe-trash" ng-click="eliminar(item._id)"></i></a></td>
+	                    </tr>
+	                  </tbody>
+	                </table>
+	            </div>
+			</div>
+		</div>
+
+	</div>
+</div>
