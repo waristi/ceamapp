@@ -2,16 +2,16 @@ language: node_js
 node_js:
   - "node"
 services: mongodb
-before_script:
-  - "npm install "
-script: 
-  - "npm test "
 
 addons:
   sonarcloud:
-    organization: "waristi-github" # the key of the org you chose at step #3
+    organization: "waristi-github" 
     token:
-      secure: "833a5b9f41b56c13ab75b1db5f70b898fabbd42e" # encrypted value of your token
+      secure: 833a5b9f41b56c13ab75b1db5f70b898fabbd42e 
+
+before_script:
+  - "npm install "
+
 script:
-  # other script steps might be done before running the actual analysis
+  - "npm test "
   - sonar-scanner
