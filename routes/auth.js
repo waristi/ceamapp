@@ -70,7 +70,7 @@ router.post('/', function(req, res, next){
 		if (!item) {
 			data["error"] = "Usuario no valido.";
 			res.status(HttpStatus.BAD_REQUEST).send(data);
-		}else if(item){
+		}else{
 
 			if(item.password != password){
 				data["error"] = "Contraseña no valida.";
