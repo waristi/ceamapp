@@ -1,0 +1,63 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<form class="card" ng-submit="guardar()">
+				<div class="card-header">
+                    <h3 class="card-title">Programa</h3>
+                </div>
+                <div class="card-body">
+                	<div class="row">
+                		<div class="col-12">
+                			<div class="form-group">
+	                            <label class="form-label">Nombre</label>
+	                            <input type="text" class="form-control" name="example-text-input" placeholder="Ingrese Nombre del programa" ng-model="dataPrograma.nombre">
+	                        </div>
+
+	                        <div class="form-group">
+		                        <label class="form-label">Facultad</label>
+		                        <select name="beast" id="select-beast" ng-model="dataPrograma.facultad" class="form-control custom-select">
+						            <option ng-repeat="item in listFacultad" value="{{item._id}}" ng-selected="dataPrograma.facultad._id == item._id">{{ item.nombre }}</option>
+						        </select>
+		                    </div>
+                		</div>
+                	</div>
+                </div>
+                <div class="card-footer text-right">
+                  <div class="d-flex">
+                    <button type="submit" class="btn btn-primary ml-auto">Guardar</button>
+                  </div>
+                </div>
+			</form>
+		</div>
+
+		<div class="col-lg-8">
+            <div class="alert alert-warning alert-dismissible" ng-show="alert != ''">
+            	{{ alert }}
+            </div>
+			<div class="card">
+				<div class="table-responsive">
+	                <table class="table card-table table-striped table-vcenter">
+	                  <thead>
+	                    <tr>
+	                      <th colspan="2">Nombre</th>
+	                      <th>Facultad</th>
+	                      <th></th>
+	                      <th></th>
+	                    </tr>
+	                  </thead>
+	                  <tbody>
+	                    <tr ng-repeat="item in listPrograma">
+	                      <td><span class="avatar">{{ item.nombre.substr(0,2).toUpperCase() }}</span></td>
+	                      <td>{{ item.nombre }}</td>
+	                      <td>{{ item.facultad.nombre }}</td>
+	                      <td class="w-1"><a class="icon"><i class="fe fe-edit" ng-click="editar(item)"></i></a></td>
+	                      <td class="w-1"><a class="icon"><i class="fe fe-trash" ng-click="eliminar(item._id)"></i></a></td>
+	                    </tr>
+	                  </tbody>
+	                </table>
+	            </div>
+			</div>
+		</div>
+
+	</div>
+</div>

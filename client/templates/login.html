@@ -1,0 +1,48 @@
+<div class="page">
+  <div class="page-single">
+    <div class="container">
+      <div class="row">
+        <div class="col col-login mx-auto">
+          <div class="text-center mb-6">
+            <img src="./assets/brand/tabler.svg" class="h-6" alt="">
+          </div>
+          <form class="card" ng-submit="login()">
+            <div class="card-body p-6">
+              <img src="./assets/images/logo.png">
+              <br>
+              <div class="form-group">
+                <label class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Usuario" ng-model="dataUser.us" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  Contraseña
+                  <!--<a href="./forgot-password.html" class="float-right small">I forgot password</a>-->
+                </label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese Contraseña" ng-model="dataUser.pw" required>
+              
+              </div>
+              <div class="form-group">
+                <label class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" />
+                  <span class="custom-control-label">Recordar Contraseña</span>
+                </label>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="alert alert-warning alert-dismissible" ng-show="alert != ''">
+            {{ alert }}
+          </div>
+          <!--<div class="text-center text-muted">
+            Don't have account yet? <a href="./register.html">Sign up</a>
+          </div>-->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
