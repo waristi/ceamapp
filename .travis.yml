@@ -6,3 +6,12 @@ before_script:
   - "npm install "
 script: 
   - "npm test "
+
+deploy:
+  - provider: s3
+  - provider: codedeploy
+    access_key_id: "6286-1210-0443"
+    secret_access_key: "4206431e0677064f9247796db1144ec9a4656962df494e560ae2d9f32467ec72"
+    bucket: "S3 Bucket"
+    key: latest/pruebas.zip
+    application: pruebas
