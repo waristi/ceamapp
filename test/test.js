@@ -54,7 +54,7 @@ describe('Usuarios', function () {
 })
 
 
-//FACULTAD
+//FACULTAD 
 describe('Facultad', function () {
 
 	var id = "";
@@ -113,9 +113,7 @@ describe('Facultad', function () {
 	})
 })
 
-
-
-//ENTIDAD
+//ENTIDAD 
 describe('Entidad', function () {
 
 	var id = "";
@@ -175,6 +173,126 @@ describe('Entidad', function () {
 })
 
 
+//ESTACIÓN
+describe('Estacion', function () {
+
+	var id = "";
+
+	it('POST / Estacion', function (done) {
+		request(app)
+			.post("/api/estacion")
+			.send({ nombre: 'Prueba Mocha' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.CREATED)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				id = res.body.id;
+				done();
+			})
+	})
+
+
+	it('GET / Estacion', function (done) {
+		request(app)
+			.get("/api/estacion")
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+
+	it('PUT / Estacion', function (done) {
+		request(app)
+			.put("/api/estacion/" + id)
+			.send({ nombre: 'Prueba Mocha Edit' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+	it('DELETE / Estacion', function (done) {
+		request(app)
+			.delete("/api/estacion/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+})
+
+//DATOS ESTACIÓN
+describe('DatosEstacion', function () {
+
+	var id = "";
+
+	it('POST / DatosEstacion', function (done) {
+		request(app)
+			.post("/api/DatosEstacion")
+			.send({ nombre: 'Prueba Mocha' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.CREATED)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				id = res.body.id;
+				done();
+			})
+	})
+
+
+	it('GET / DatosEstacion', function (done) {
+		request(app)
+			.get("/api/DatosEstacion")
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+
+	it('PUT / DatosEstacion', function (done) {
+		request(app)
+			.put("/api/DatosEstacion/" + id)
+			.send({ nombre: 'Prueba Mocha Edit' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+	it('DELETE / DatosEstacion', function (done) {
+		request(app)
+			.delete("/api/DatosEstacion/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+})
+
+
 //PROGRAMA
 describe('Programa', function () {
 
@@ -183,7 +301,7 @@ describe('Programa', function () {
 	it('POST / Programa', function (done) {
 		request(app)
 			.post("/api/programa")
-			.send({ nombre: 'Prueba Mocha'})
+			.send({ nombre: 'Programa'})
 			.set('Authorization', 'Bearer ' + token)
 			.expect(HttpStatus.CREATED)
 			.end(function (err, res) {
@@ -207,10 +325,34 @@ describe('Programa', function () {
 			})
 	})
 
+	it('PUT / Programa', function(done){
+		request(app)
+		.put("/api/Programa/" + id)
+		.send({nombre: 'Prueba Mocha Edit'})
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+	it('DELETE / Programa', function(done){
+		request(app)
+		.delete("/api/Programa/" + id)
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
 })
-
-
-//INVESTIGADOR
+	
+/** //INVESTIGADOR
 describe('Investigador', function(){
 
 	var id = "";
@@ -218,7 +360,7 @@ describe('Investigador', function(){
 	it('POST / Investigador', function(done){
 		request(app)
 		.post("/api/investigador")
-		.send({documento: 'Mocha', nombre: ' Prueba', correo: 'mocha@c.c'})	
+		.send({nombre: 'Mocha'})	
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.CREATED)
 		.end(function(err, res){
@@ -242,38 +384,90 @@ describe('Investigador', function(){
 		})
 	})
 
-})
-
-//PROYECTO
-describe('Proyecto', function(){
-
-	var id = "";
-
-	it('POST / Proyecto', function(done){
+	it('PUT / Investigador', function(done){
 		request(app)
-		.post("/api/proyecto")
-		.send({nombre: 'Prueba Mocha'})	
+		.put("/api/Investigador/" + id)
+		.send({nombre: 'Prueba Mocha Edit'})
 		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.CREATED)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			id = res.body.id;
-			done();
-		})
-	})
-
-
-	it('GET / Proyecto', function(done){
-		request(app)
-		.get("/api/proyecto")
-		.set('Authorization', 'Bearer ' +  token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
 			if(err)
 				return done(err);
 			done();
 		})
+	})
+
+	it('DELETE / Investigador', function(done){
+		request(app)
+		.delete("/api/Investigador/" + id)
+		.set('Authorization', 'Bearer ' + token)
+		.expect(HttpStatus.OK)
+		.end(function(err, res){
+			if(err)
+				return done(err);
+			done();
+		})
+	})
+
+}) 
+
+
+
+//PROYECTO
+describe('Proyecto', function () {
+
+	var id = "";
+
+	it('POST / Proyecto', function (done) {
+		request(app)
+			.post("/api/proyecto")
+			.send({ titulo: 'Prueba Mocha' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.CREATED)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				id = res.body.id;
+				done();
+			})
+	})
+
+
+	it('GET / Proyecto', function (done) {
+		request(app)
+			.get("/api/proyecto")
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+	it('PUT / Proyecto', function (done) {
+		request(app)
+			.put("/api/proyecto/" + id)
+			.send({ titulo: 'Prueba Mocha Edit' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+	it('DELETE / Proyecto', function (done) {
+		request(app)
+			.delete("/api/proyecto/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
 	})
 
 })
@@ -286,7 +480,7 @@ describe('GrupoInvestigacion', function(){
 
 	it('POST / GrupoInvestigacion', function(done){
 		request(app)
-		.post("/api/grupo")
+		.post("/api/grupoInvestigacion")
 		.send({nombre: 'Prueba Mocha'})	
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.CREATED)
@@ -301,20 +495,18 @@ describe('GrupoInvestigacion', function(){
 
 	it('GET / GrupoInvestigacion', function(done){
 		request(app)
-		.get("/api/grupo")
+		.get("/api/grupoInvestigacion")
 		.set('Authorization', 'Bearer ' +  token)
 		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
+		.expect((res) => {
+                expect(res.body.length).toBe(2);
+            })
+            .end(done);
 	})
 
-/**
 	it('PUT / GrupoInvestigacion', function(done){
 		request(app)
-		.put("/api/grupo/"+ id)
+		.put("/api/grupoInvestigacion/" + id)
 		.send({nombre: 'Prueba Mocha Edit'})
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
@@ -327,71 +519,7 @@ describe('GrupoInvestigacion', function(){
 
 	it('DELETE / GrupoInvestigacion', function(done){
 		request(app)
- 		.delete("/api/grupoInvestigacion/" + id)
- 		.put("/api/grupo/"+ id)
- 		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-	*/
-})
-
- 
-
-//ESTACIÓN
-describe('Estacion', function(){
-
-	var id = "";
-
-	it('POST / Estacion', function(done){
-		request(app)
-		.post("/api/estacion")
-		.send({nombre: 'Prueba Mocha'})	
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.CREATED)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			id = res.body.id;
-			done();
-		})
-	})
-
-
-	it('GET / Estacion', function(done){
-		request(app)
-		.get("/api/estacion")
-		.set('Authorization', 'Bearer ' +  token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-
-	it('PUT / Estacion', function(done){
-		request(app)
-		.put("/api/estacion/" + id)
-		.send({nombre: 'Prueba Mocha Edit'})
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-	it('DELETE / Estacion', function(done){
-		request(app)
-		.delete("/api/estacion/" + id)
+		.delete("/api/grupoInvestigacion/" + id)
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -401,65 +529,5 @@ describe('Estacion', function(){
 		})
 	})
 })
+*/
 
-
-//DATOS ESTACIÓN
-describe('DatosEstacion', function(){
-
-	var id = "";
-
-	it('POST / DatosEstacion', function(done){
-		request(app)
-		.post("/api/datosEstacion")
-		.send({nombre: 'Prueba Mocha'})	
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.CREATED)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			id = res.body.id;
-			done();
-		})
-	})
-
-
-	it('GET / DatosEstacion', function(done){
-		request(app)
-		.get("/api/datosEstacion")
-		.set('Authorization', 'Bearer ' +  token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-
-	it('PUT / DatosEstacion', function(done){
-		request(app)
-		.put("/api/datosEstacion/" + id)
-		.send({nombre: 'Prueba Mocha Edit'})
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-	it('DELETE / DatosEstacion', function(done){
-		request(app)
-		.put("/api/datosEstacion/" + id)
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-	
-})
- 
