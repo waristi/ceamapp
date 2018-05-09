@@ -11,8 +11,10 @@ jdk:
 addons:
   sonarcloud: true
 
+after_success:
+  - npm run coveralls
 
 script:
   - npm test
-  - sonar-scanner -Dsonar.login=833a5b9f41b56c13ab75b1db5f70b898fabbd42e -Dsonar.organization=waristi-github -Dsonar.exclusions="node_modules/**/*, client/**/*" -Dsonar.projectKey=ceamapp -Dsonar.sources="./" -X
+  - sonar-scanner -Dsonar.login=833a5b9f41b56c13ab75b1db5f70b898fabbd42e -Dsonar.organization=waristi-github -Dsonar.exclusions="node_modules/**/*, client/**/*, test/test.js" -Dsonar.projectKey=ceamapp -Dsonar.sources="./" -X
 
