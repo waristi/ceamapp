@@ -18,8 +18,13 @@ router.get('/', middleware.ensureAuthenticated, function(req, res, next){
 //GUARDAR DatosEstacion
 router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
-	var datosEstacion = new DatosEstacion(req.body);
-	datosEstacion.save(function(err, item){
+	var cantidadRegistros = new DatosEstacion(req.body);
+ 	var dato = new DatosEstacion
+ 		({
+ 			 	temperatura : 72,
+
+ 		});
+    	dato.save(function(err, item){
 		if(err){return next(err)}	
 		res.status(HttpStatus.CREATED).send({message: "DatosEstacion creada correctamente", id: item._id});
 	}) 
