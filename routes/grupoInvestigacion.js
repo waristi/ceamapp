@@ -33,7 +33,8 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 router.put('/:idGrupo', middleware.ensureAuthenticated, function(req, res){
 
 	GrupoInvestigacion.findById(req.params.idGrupo, function(err, item){
-  	    item.nombre   		= req.body.nombre;
+		console.log(item);
+   	    item.nombre   		= req.body.nombre;
 	    item.categoria   	= req.body.categoria;
 	    item.fechaCreacion  = req.body.fechaCreacion;
 	    item.programa   	= mongoose.mongo.ObjectId(req.body.programa);
