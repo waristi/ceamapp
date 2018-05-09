@@ -286,7 +286,7 @@ describe('GrupoInvestigacion', function(){
 
 	it('POST / GrupoInvestigacion', function(done){
 		request(app)
-		.post("/api/grupoInvestigacion")
+		.post("/api/grupo")
 		.send({nombre: 'Prueba Mocha'})	
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.CREATED)
@@ -301,7 +301,7 @@ describe('GrupoInvestigacion', function(){
 
 	it('GET / GrupoInvestigacion', function(done){
 		request(app)
-		.get("/api/grupoInvestigacion")
+		.get("/api/grupo")
 		.set('Authorization', 'Bearer ' +  token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -311,10 +311,10 @@ describe('GrupoInvestigacion', function(){
 		})
 	})
 
-
+/**
 	it('PUT / GrupoInvestigacion', function(done){
 		request(app)
-		.put("/api/grupoInvestigacion/" + id)
+		.put("/api/grupo/"+ id)
 		.send({nombre: 'Prueba Mocha Edit'})
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
@@ -327,7 +327,11 @@ describe('GrupoInvestigacion', function(){
 
 	it('DELETE / GrupoInvestigacion', function(done){
 		request(app)
+<<<<<<< HEAD
 		.delete("/api/grupoInvestigacion/" + id)
+=======
+		.put("/api/grupo/"+ id)
+>>>>>>> 821c90faca10059ef2de37df5456a62c9feefe9c
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -336,8 +340,15 @@ describe('GrupoInvestigacion', function(){
 			done();
 		})
 	})
+
+	*/
 })
 
+<<<<<<< HEAD
+=======
+//<<<<<<< HEAD
+//=======
+>>>>>>> 821c90faca10059ef2de37df5456a62c9feefe9c
 
 //ESTACIÓN
 describe('Estacion', function(){
@@ -406,7 +417,7 @@ describe('DatosEstacion', function(){
 
 	it('POST / DatosEstacion', function(done){
 		request(app)
-		.post("/api/DatosEstacion")
+		.post("/api/datosEstacion")
 		.send({nombre: 'Prueba Mocha'})	
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.CREATED)
@@ -421,7 +432,7 @@ describe('DatosEstacion', function(){
 
 	it('GET / DatosEstacion', function(done){
 		request(app)
-		.get("/api/DatosEstacion")
+		.get("/api/datosEstacion")
 		.set('Authorization', 'Bearer ' +  token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -431,10 +442,10 @@ describe('DatosEstacion', function(){
 		})
 	})
 
-/**
+
 	it('PUT / DatosEstacion', function(done){
 		request(app)
-		.put("/api/DatosEstacion/" + id)
+		.put("/api/datosEstacion/" + id)
 		.send({nombre: 'Prueba Mocha Edit'})
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
@@ -447,7 +458,7 @@ describe('DatosEstacion', function(){
 
 	it('DELETE / DatosEstacion', function(done){
 		request(app)
-		.put("/api/DatosEstacion/" + id)
+		.put("/api/datosEstacion/" + id)
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -456,6 +467,10 @@ describe('DatosEstacion', function(){
 			done();
 		})
 	})
-	*/
+	
 })
+<<<<<<< HEAD
 
+=======
+//>>>>>>> db097874793ba90b5040fd8236263e4da210065a
+>>>>>>> 821c90faca10059ef2de37df5456a62c9feefe9c

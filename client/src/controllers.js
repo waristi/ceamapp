@@ -723,8 +723,8 @@ angular.module('appWeb.controllers', [])
 		})	
 	}
 
-	getAll();
 	getPrograma();
+	getAll();
 })
 
 
