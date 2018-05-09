@@ -11,7 +11,7 @@ gulp.task('stylus', function () {
 });
 
 gulp.task('node:test', shell.task([
-    'npm test'
+    'npm run coverage'
 ]))
 
 gulp.task('node:serve', shell.task([
