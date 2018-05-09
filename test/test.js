@@ -264,6 +264,31 @@ describe('DatosEstacion', function () {
 			})
 	})
 
+	it('PUT / DatosEstacion', function (done) {
+		request(app)
+			.put("/api/DatosEstacion/" + id)
+			.send({ cantidad: '3' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+	it('DELETE / DatosEstacion', function (done) {
+		request(app)
+			.delete("/api/DatosEstacion/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
 
 })
 
@@ -276,7 +301,7 @@ describe('Programa', function () {
 	it('POST / Programa', function (done) {
 		request(app)
 			.post("/api/programa")
-			.send({ nombre: 'Programa'})
+			.send({ nombre: 'Programa' })
 			.set('Authorization', 'Bearer ' + token)
 			.expect(HttpStatus.CREATED)
 			.end(function (err, res) {
@@ -300,91 +325,32 @@ describe('Programa', function () {
 			})
 	})
 
-	it('PUT / Programa', function(done){
+	it('PUT / Programa', function (done) {
 		request(app)
-		.put("/api/programa/" + id)
-		.send({nombre: 'Prueba Mocha Edit'})
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
+			.put("/api/programa/" + id)
+			.send({ nombre: 'Prueba Mocha Edit' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
 	})
 
-	it('DELETE / Programa', function(done){
+	it('DELETE / Programa', function (done) {
 		request(app)
-		.delete("/api/programa/" + id)
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
+			.delete("/api/programa/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
 	})
 
 })
-	
-/** //INVESTIGADOR
-describe('Investigador', function(){
-
-	var id = "";
-
-	it('POST / Investigador', function(done){
-		request(app)
-		.post("/api/investigador")
-		.send({nombre: 'Mocha'})	
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.CREATED)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			id = res.body.id;
-			done();
-		})
-	})	
-
-
-	it('GET / Investigador', function(done){
-		request(app)
-		.get("/api/investigador")
-		.set('Authorization', 'Bearer ' +  token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-	it('PUT / Investigador', function(done){
-		request(app)
-		.put("/api/Investigador/" + id)
-		.send({nombre: 'Prueba Mocha Edit'})
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-	it('DELETE / Investigador', function(done){
-		request(app)
-		.delete("/api/Investigador/" + id)
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
-	})
-
-}) 
 
 
 
@@ -447,62 +413,121 @@ describe('Proyecto', function () {
 
 })
 
-
-//GRUPOS DE INVESTIGACION
-describe('GrupoInvestigacion', function(){
+//INVESTIGADOR
+describe('Investigador', function () {
 
 	var id = "";
 
-	it('POST / GrupoInvestigacion', function(done){
+	it('POST / Investigador', function (done) {
 		request(app)
-		.post("/api/grupoInvestigacion")
-		.send({nombre: 'Prueba Mocha'})	
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.CREATED)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			id = res.body.id;
-			done();
-		})
+			.post("/api/investigador")
+			.send({ nombre: 'Mocha' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.CREATED)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				id = res.body.id;
+				done();
+			})
 	})
 
 
-	it('GET / GrupoInvestigacion', function(done){
+	it('GET / Investigador', function (done) {
 		request(app)
-		.get("/api/grupoInvestigacion")
-		.set('Authorization', 'Bearer ' +  token)
-		.expect(HttpStatus.OK)
-		.expect((res) => {
-                expect(res.body.length).toBe(2);
-            })
-            .end(done);
+			.get("/api/investigador")
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
 	})
 
-	it('PUT / GrupoInvestigacion', function(done){
+	it('PUT / Investigador', function (done) {
 		request(app)
-		.put("/api/grupoInvestigacion/" + id)
-		.send({nombre: 'Prueba Mocha Edit'})
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
+			.put("/api/Investigador/" + id)
+			.send({ nombre: 'Prueba Mocha Edit' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
 	})
 
-	it('DELETE / GrupoInvestigacion', function(done){
+	it('DELETE / Investigador', function (done) {
 		request(app)
-		.delete("/api/grupoInvestigacion/" + id)
-		.set('Authorization', 'Bearer ' + token)
-		.expect(HttpStatus.OK)
-		.end(function(err, res){
-			if(err)
-				return done(err);
-			done();
-		})
+			.delete("/api/Investigador/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+})
+
+
+//GRUPOS DE INVESTIGACION
+describe('GrupoInvestigacion', function () {
+
+	var id = "";
+
+	it('POST / GrupoInvestigacion', function (done) {
+		request(app)
+			.post("/api/grupoInvestigacion")
+			.send({ nombre: 'Prueba Mocha' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.CREATED)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				id = res.body.id;
+				done();
+			})
+	})
+
+
+	it('GET / GrupoInvestigacion', function (done) {
+		request(app)
+			.get("/api/grupoInvestigacion")
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.expect((res) => {
+				expect(res.body.length).toBe(2);
+			})
+			.end(done);
+	})
+
+	it('PUT / GrupoInvestigacion', function (done) {
+		request(app)
+			.put("/api/grupoInvestigacion/" + id)
+			.send({ nombre: 'Prueba Mocha Edit' })
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
+	})
+
+	it('DELETE / GrupoInvestigacion', function (done) {
+		request(app)
+			.delete("/api/grupoInvestigacion/" + id)
+			.set('Authorization', 'Bearer ' + token)
+			.expect(HttpStatus.OK)
+			.end(function (err, res) {
+				if (err)
+					return done(err);
+				done();
+			})
 	})
 })
-*/
+
 
