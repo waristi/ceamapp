@@ -11,7 +11,7 @@
                 			
 	                        <div class="form-group">
 	                            <label class="form-label">Cantidad</label>
-	                            <input type="text" class="form-control" name="example-text-input" placeholder="cantidad registros" ng-model="dataDatoEstacion.cantidad">
+	                            <input type="text" class="form-control" name="example-text-input" placeholder="cantidad registros" ng-model="dataDatoEstacion.cantidad" required="true">
 	                        </div>
 
 	                       
@@ -36,17 +36,19 @@
 	                <table class="table card-table table-striped table-vcenter">
 	                  <thead>
 	                    <tr>
-	                      <th colspan="3">Nombre</th>
-	                      <th>Teléfono</th>
-	                      <th>Dirección</th>
-	                      <th>Correo</th>
+	                      <th >Fecha</th>
+	                      <th>Temperatura</th>
+	                      <th>Temperatura alta</th>
+	                      <th>Temperatura baja</th>
 	                    </tr>
 	                  </thead>
 	                  <tbody>
 	                    <tr ng-repeat="item in listaDatosEstaciones">
-	                     	                      
-	                      <td class="w-1"><a class="icon"><i class="fe fe-edit" ng-click="editar(item)"></i></a></td>
-	                      <td class="w-1"><a class="icon"><i class="fe fe-trash" ng-click="eliminar(item._id)"></i></a></td>
+	                      <td>{{ item.fecha | date:'medium'}}</td>
+	                      <td>{{ item.temperatura | number:3 }}</td>
+	                      <td>{{ item.tempAlta | number:3 }}</td>
+	                      <td>{{ item.tempBaja | number:3 }}</td>      	                
+ 	                      <td class="w-1"><a class="icon"><i class="fe fe-trash" ng-click="eliminar(item._id)"></i></a></td>
 	                    </tr>
 	                  </tbody>
 	                </table>

@@ -18,38 +18,39 @@ router.get('/', function(req, res, next){
 //GUARDAR DatosEstacion
 router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
-	var cantidad = req.body.cantidad;
+ 	//var cantidad = 2;
+ 	var cantidad = parseInt(req.body.cantidad);
+ 	console.log(cantidad);
 
-	console.log(cantidad);
-
-	for(var i=0; i<cantidad; i++){
+	for(var i=0; i<cantidad; i++)
+	{
 		var data = new DatosEstacion({
 			fecha: new Date(),
-			temperatura: 0,
-			tempAlta: 0,
-			tempBaja: 0,
-			humedad: 0,
-			puntoRocio: 0,
-			velocidadViento: 0,
-			direccionViento: 0,
-			vientoCorriente: 0,
-			altaVelocidadViento: 0,
-			altaDireccionViento: 0,
-			vientoFrio: 0,
-			indiceCalor: 0,
-			thw: 0,
-			thsw: 0,
-			barometro: 0,
-			lluvia: 0,
-			tasalluvia: 0,
-			radSolar: 0,
-			energiaSolar: 0,
-			radSolarAlta: 0,
-			etIn: 0,
-			eiIndiceuv: 0,
-			diasGradoCalentamiento: 0,
-			diasGradoEnfriamiento: 0
-		})
+			temperatura:Math.random() * (100 - 1) + 1,
+			tempAlta: Math.random() * (100 - 1) + 1,
+			tempBaja: Math.random() * (100 - 1) + 1,
+			humedad: Math.random() * (100 - 1) + 1,
+			puntoRocio: Math.random() * (100 - 1) + 1,
+			velocidadViento: Math.random() * (100 - 1) + 1,
+			direccionViento: Math.random() * (100 - 1) + 1,
+			vientoCorriente: Math.random() * (100 - 1) + 1,
+			altaVelocidadViento: Math.random() * (100 - 1) + 1,
+			altaDireccionViento: Math.random() * (100 - 1) + 1,
+			vientoFrio: Math.random() * (100 - 1) + 1,
+			indiceCalor: Math.random() * (100 - 1) + 1,
+			thw: Math.random() * (100 - 1) + 1,
+			thsw: Math.random() * (100 - 1) + 1,
+			barometro: Math.random() * (100 - 1) + 1,
+			lluvia: Math.random() * (100 - 1) + 1,
+			tasalluvia: Math.random() * (100 - 1) + 1,
+			radSolar: Math.random() * (100 - 1) + 1,
+			energiaSolar: Math.random() * (100 - 1) + 1,
+			radSolarAlta: Math.random() * (100 - 1) + 1,
+			etIn: Math.random() * (100 - 1) + 1,
+			eiIndiceuv: Math.random() * (100 - 1) + 1,
+			diasGradoCalentamiento: Math.random() * (100 - 1) + 1,
+			diasGradoEnfriamiento: Math.random() * (100 - 1) + 1
+		});
 
 		console.log(data);
 
@@ -59,17 +60,6 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 	}
 
 	res.status(HttpStatus.CREATED).send({message: "Entidad creada correctamente"});
-
-	/*var cantidadRegistros = new DatosEstacion(req.body);
- 	var dato = new DatosEstacion
- 		({
- 			 	temperatura : 72,
-
- 		});
-    	dato.save(function(err, item){
-		if(err){return next(err)}	
-		res.status(HttpStatus.CREATED).send({message: "DatosEstacion creada correctamente", id: item._id});
-	})*/
 })
 
 //EDITAR Estacion
