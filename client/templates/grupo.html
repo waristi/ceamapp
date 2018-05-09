@@ -32,7 +32,7 @@
 
 	                        <div class="form-group">
 		                        <label class="form-label">Programa</label>
-		                        <select name="beast" id="select-beast" ng-model="dataGrupo.programa" class="form-control custom-select" required="true">
+		                        <select  name="beast" id="select-beast" ng-model="dataGrupo.programa" class="form-control custom-select" required>
 						            <option ng-repeat="item in listPrograma" value="{{item._id}}" ng-selected="dataGrupo.programa._id == item._id">{{ item.nombre }}</option>
 						        </select>
 		                    </div>

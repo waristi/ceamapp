@@ -10,14 +10,14 @@
                 		<div class="col-12">
                 			<div class="form-group">
 	                            <label class="form-label">Nombre</label>
-	                            <input type="text" class="form-control" name="example-text-input" placeholder="Ingrese Nombre del programa" ng-model="dataPrograma.nombre">
+	                            <input type="text" class="form-control" name="example-text-input" placeholder="Ingrese Nombre del programa" ng-model="dataPrograma.nombre" required="true">
 	                        </div>
 
 	                        <div class="form-group">
 		                        <label class="form-label">Facultad</label>
 		                        <select name="beast" id="select-beast" ng-model="dataPrograma.facultad" class="form-control custom-select">
 						            <option ng-repeat="item in listFacultad" value="{{item._id}}" ng-selected="dataPrograma.facultad._id == item._id">{{ item.nombre }}</option>
-						        </select>
+						        </select  required="true">
 		                    </div>
                 		</div>
                 	</div>

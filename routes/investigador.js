@@ -33,14 +33,17 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 router.put('/:idInvestigador', middleware.ensureAuthenticated, function(req, res){
 
 	Investigador.findById(req.params.idInvestigador, function(err, item){
+
+		var fNacimiento = new Date(req.body.fechaNacimiento);
+		var fVinculacion = new Date(req.body.vinculacion);
 			
 	    item.documento   = req.body.documento;
 	    item.nombre   = req.body.nombre;
 	    item.apellido   = req.body.apellido;
 	    item.correo   = req.body.correo;
-	    item.vinculacion   = req.body.vinculacion;
+	    item.vinculacion   = fVinculacion;
 	    item.horas   = req.body.horas;
-	    item.fechaNacimiento   = req.body.fechaNacimientos;
+	    item.fechaNacimiento   = fNacimiento;
 	    item.grupoInvestigacion   = mongoose.mongo.ObjectId(req.body.grupoInvestigacion);
 
 		item.save(function(err){
