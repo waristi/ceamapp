@@ -8,6 +8,10 @@
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --recursive --exit",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waristi/ceamapp.git"
+  },
   "dependencies": {
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
