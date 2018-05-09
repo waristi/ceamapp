@@ -27,7 +27,7 @@
 
 		                    <div class="form-group">
 	                            <label class="form-label">Fecha</label>
-	                            <input type="date" class="form-control" name="example-text-input" placeholder="Ingrese Nombre del programa" ng-model="dataGrupo.fecha">
+	                            <input type="date" class="form-control" name="example-text-input" placeholder="Ingrese Nombre del programa" ng-model="dataGrupo.fechaCreacion">
 	                        </div>
 
 	                        <div class="form-group">
@@ -69,7 +69,7 @@
 	                      <td><span class="avatar">{{ item.nombre.substr(0,2).toUpperCase() }}</span></td>
 	                      <td>{{ item.nombre }}</td>
 	                      <td>{{ item.categoria }}</td>
-	                      <td>{{ item.fecha }}</td>
+	                      <td>{{ item.fechaCreacion }}</td>
 	                      <td>{{ item.programa.nombre }}</td>
 	                      <td class="w-1"><a class="icon"><i class="fe fe-edit" ng-click="editar(item)"></i></a></td>
 	                      <td class="w-1"><a class="icon"><i class="fe fe-trash" ng-click="eliminar(item._id)"></i></a></td>

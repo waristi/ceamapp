@@ -26,9 +26,9 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 })
 
 //EDITAR Estacion
-router.put('/:idEntidad', middleware.ensureAuthenticated, function(req, res){
+router.put('/:idEstacion', middleware.ensureAuthenticated, function(req, res){
 
-	Estacion.findById(req.params.idEntidad, function(err, item){
+	DatosEstacion.findById(req.params.idEstacion, function(err, item){
 			
 	    item.marca   	= req.body.marca;
 	    item.ubicacion   = req.body.ubicacion;
@@ -44,9 +44,9 @@ router.put('/:idEntidad', middleware.ensureAuthenticated, function(req, res){
  
 
 //ELIMINAR DatosEstacion
-router.delete('/:idEntidad', middleware.ensureAuthenticated, function(req, res, next){
+router.delete('/:idEstacion', middleware.ensureAuthenticated, function(req, res, next){
 
-	DatosEstacion.findByIdAndRemove(req.params.idEntidad, function(err){
+	DatosEstacion.findByIdAndRemove(req.params.idEstacion, function(err){
 		if(err){res.send(err)}
 		res.status(HttpStatus.OK).send({message: "DatosEstacion se elimino correctamente."});
 	})
