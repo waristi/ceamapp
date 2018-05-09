@@ -3,8 +3,15 @@ require('express'); var router = express.Router();
 
 var mongoose = require('mongoose');
 var DatosEstacion = mongoose.model('DatosEstacion');
+var Entidad = mongoose.model('Entidad');
+
+//MOTOR DE REGLAS
+var RuleEngine = require('node-rules');
+var nodemailer = require('nodemailer');
+
 
 var middleware = require('../middleware');
+
 
 //OBTENER DatosEstacion
 router.get('/', function(req, res, next){
@@ -18,12 +25,25 @@ router.get('/', function(req, res, next){
 //GUARDAR DatosEstacion
 router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
- 	//var cantidad = 2;
+
  	var cantidad = parseInt(req.body.cantidad);
- 	console.log(cantidad);
+
+ 	//REGLA DE NEGOCIO
+ 	var rules = [{
+	    "condition": function(R) {
+	        R.when((this.tempAlta > 500) && (this.temperatura < 500));
+	    },
+	    "consequence": function(R) {
+	        this.result = true;
+	        R.stop();
+	    }
+	}];
+ 
+
 
 	for(var i=0; i<cantidad; i++)
 	{
+
 		var data = new DatosEstacion({
 			fecha: new Date(),
 			temperatura:Math.random() * (100 - 1) + 1,
@@ -52,10 +72,50 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 			diasGradoEnfriamiento: Math.random() * (100 - 1) + 1
 		});
 
-		console.log(data);
-
 		data.save(function(err, item){
 			if(err){return next(err)}	
+
+			var R = new RuleEngine(rules);
+
+			R.execute(data, function(result){ 
+			    if(result.result){
+			        console.log("Genero Alerta"); 
+
+			        Entidad.find(function(err, items){
+						if(err){error(err)}
+
+						for(var i=0; i<items.length; i++){
+							var transporter = nodemailer.createTransport({
+							  service: 'gmail',
+							  auth: {
+							    user: 'bazuluagaa@uqvirtual.edu.co',
+							    pass: '1094938559'
+							  }
+							});
+
+							var mailOptions = {
+							  from: 'ceam@gmail.com',
+							  to: items[i].correo,
+							  subject: 'Urgente Alerta Estación (CEAM) ' + new Date(),
+							  text: 'Alerta Detectada \n El centro de estudios de alta montaña detecto una alerta en la estación con codigo 001, por favor tomar las precauciones necesarias. ¡Gracias!'
+							};
+
+							transporter.sendMail(mailOptions, function(error, info){
+							  if (error) {
+							    console.log(error);
+							  } else {
+							    console.log('Email sent: ' + info.response);
+							  }
+							});
+						}
+
+					})
+
+			    }else 
+			        console.log("No genero alerta");
+			    
+			});
+			
 		}) 
 	}
 

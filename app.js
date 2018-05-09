@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var io  = require( "socket.io")();
 
 //**************LLAMAMOS EL MODELO*****************
 require('./models/Usuario');
@@ -17,6 +18,8 @@ require('./models/DatosEstacion');
 require('./models/GrupoInvestigacion');
 require('./models/Investigador');
 require('./models/Proyecto');
+require('./models/Rules');
+
 
 //CONEXION A BASE DE DATOS
 mongoose.connect('mongodb://localhost/ceamdb');
@@ -37,6 +40,14 @@ var proyecto = require('./routes/proyecto');
 
 
 var app = express();
+
+io.on('connection', function(socket) {
+  console.log('Un cliente se ha conectado');
+    socket.emit('messages', messages);
+});
+
+app.io  = io;
+
 app.use(cors());
 
 // view engine setup
