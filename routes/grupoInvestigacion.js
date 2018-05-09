@@ -25,7 +25,7 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
 	grupoInvestigacion.save(function(err, item){
 		if(err){return next(err)}	
-		res.status(HttpStatus.CREATED).send({message: "Grupo creado correctamente"});
+		res.status(HttpStatus.CREATED).send({message: "Grupo creado correctamente", id: item._id});
 	}) 
 })
 

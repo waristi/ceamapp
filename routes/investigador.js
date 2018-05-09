@@ -25,7 +25,7 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
 	investigador.save(function(err, item){
 		if(err){return next(err)}	
-		res.status(HttpStatus.CREATED).send({message: "Investigador creada correctamente"});
+		res.status(HttpStatus.CREATED).send({message: "Investigador creada correctamente", id: item._id});
 	}) 
 })
 
