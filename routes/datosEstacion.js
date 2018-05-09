@@ -50,7 +50,7 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 			estacion: 0
 		})
 
-		entidad.save(function(err, item){
+		data.save(function(err, item){
 			if(err){return next(err)}	
 		}) 
 	}
