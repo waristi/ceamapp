@@ -7,7 +7,7 @@ var DatosEstacion = mongoose.model('DatosEstacion');
 var middleware = require('../middleware');
 
 //OBTENER DatosEstacion
-router.get('/', middleware.ensureAuthenticated, function(req, res, next){
+router.get('/', function(req, res, next){
 
 	DatosEstacion.find(function(err, items){
 		if(err){error(err)}
@@ -19,6 +19,8 @@ router.get('/', middleware.ensureAuthenticated, function(req, res, next){
 router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
 	var cantidad = req.body.cantidad;
+
+	console.log(cantidad);
 
 	for(var i=0; i<cantidad; i++){
 		var data = new DatosEstacion({
@@ -46,9 +48,10 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 			etIn: 0,
 			eiIndiceuv: 0,
 			diasGradoCalentamiento: 0,
-			diasGradoEnfriamiento: 0,
-			estacion: 0
+			diasGradoEnfriamiento: 0
 		})
+
+		console.log(data);
 
 		data.save(function(err, item){
 			if(err){return next(err)}	
