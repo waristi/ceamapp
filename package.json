@@ -20,6 +20,7 @@
     "moment": "^2.22.0",
     "mongoose": "^5.0.14",
     "morgan": "~1.7.0",
+    "node-rules": "^3.1.0",
     "nodemailer": "^4.6.4",
     "serve-favicon": "~2.3.2",
     "socket.io": "^2.1.0"
