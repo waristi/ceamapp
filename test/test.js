@@ -327,12 +327,9 @@ describe('GrupoInvestigacion', function(){
 
 	it('DELETE / GrupoInvestigacion', function(done){
 		request(app)
-<<<<<<< HEAD
-		.delete("/api/grupoInvestigacion/" + id)
-=======
-		.put("/api/grupo/"+ id)
->>>>>>> 821c90faca10059ef2de37df5456a62c9feefe9c
-		.set('Authorization', 'Bearer ' + token)
+ 		.delete("/api/grupoInvestigacion/" + id)
+ 		.put("/api/grupo/"+ id)
+ 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
 			if(err)
@@ -344,11 +341,7 @@ describe('GrupoInvestigacion', function(){
 	*/
 })
 
-<<<<<<< HEAD
-=======
-//<<<<<<< HEAD
-//=======
->>>>>>> 821c90faca10059ef2de37df5456a62c9feefe9c
+ 
 
 //ESTACIÓN
 describe('Estacion', function(){
@@ -469,8 +462,4 @@ describe('DatosEstacion', function(){
 	})
 	
 })
-<<<<<<< HEAD
-
-=======
-//>>>>>>> db097874793ba90b5040fd8236263e4da210065a
->>>>>>> 821c90faca10059ef2de37df5456a62c9feefe9c
+ 
