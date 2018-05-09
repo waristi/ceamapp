@@ -16,3 +16,5 @@ script:
   - npm run coverage
   - sonar-scanner -Dsonar.login=833a5b9f41b56c13ab75b1db5f70b898fabbd42e -Dsonar.organization=waristi-github -Dsonar.exclusions="node_modules/**/*, client/**/*, test/test.js" -Dsonar.projectKey=ceamapp -Dsonar.sources="./routes" -X
 
+after_success:
+ — npm run coveralls
