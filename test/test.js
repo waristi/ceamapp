@@ -102,7 +102,7 @@ describe('Facultad', function () {
 
 	it('DELETE / Factultad', function (done) {
 		request(app)
-			.put("/api/facultad/" + id)
+			.delete("/api/facultad/" + id)
 			.set('Authorization', 'Bearer ' + token)
 			.expect(HttpStatus.OK)
 			.end(function (err, res) {
@@ -163,7 +163,7 @@ describe('Entidad', function () {
 
 	it('DELETE / Entidad', function (done) {
 		request(app)
-			.put("/api/entidad/" + id)
+			.delete("/api/entidad/" + id)
 			.set('Authorization', 'Bearer ' + token)
 			.expect(HttpStatus.OK)
 			.end(function (err, res) {
@@ -327,7 +327,7 @@ describe('GrupoInvestigacion', function(){
 
 	it('DELETE / GrupoInvestigacion', function(done){
 		request(app)
-		.put("/api/grupoInvestigacion/" + id)
+		.delete("/api/grupoInvestigacion/" + id)
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -338,8 +338,6 @@ describe('GrupoInvestigacion', function(){
 	})
 })
 
-<<<<<<< HEAD
-=======
 
 //ESTACIÓN
 describe('Estacion', function(){
@@ -389,7 +387,7 @@ describe('Estacion', function(){
 
 	it('DELETE / Estacion', function(done){
 		request(app)
-		.put("/api/estacion/" + id)
+		.delete("/api/estacion/" + id)
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){
@@ -460,4 +458,4 @@ describe('DatosEstacion', function(){
 	})
 	*/
 })
->>>>>>> db097874793ba90b5040fd8236263e4da210065a
+
