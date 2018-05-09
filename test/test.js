@@ -240,7 +240,7 @@ describe('DatosEstacion', function () {
 	it('POST / DatosEstacion', function (done) {
 		request(app)
 			.post("/api/DatosEstacion")
-			.send({ nombre: 'Prueba Mocha' })
+			.send({ cantidad: 1 })
 			.set('Authorization', 'Bearer ' + token)
 			.expect(HttpStatus.CREATED)
 			.end(function (err, res) {
@@ -264,31 +264,6 @@ describe('DatosEstacion', function () {
 			})
 	})
 
-
-	it('PUT / DatosEstacion', function (done) {
-		request(app)
-			.put("/api/DatosEstacion/" + id)
-			.send({ nombre: 'Prueba Mocha Edit' })
-			.set('Authorization', 'Bearer ' + token)
-			.expect(HttpStatus.OK)
-			.end(function (err, res) {
-				if (err)
-					return done(err);
-				done();
-			})
-	})
-
-	it('DELETE / DatosEstacion', function (done) {
-		request(app)
-			.delete("/api/DatosEstacion/" + id)
-			.set('Authorization', 'Bearer ' + token)
-			.expect(HttpStatus.OK)
-			.end(function (err, res) {
-				if (err)
-					return done(err);
-				done();
-			})
-	})
 
 })
 
@@ -327,7 +302,7 @@ describe('Programa', function () {
 
 	it('PUT / Programa', function(done){
 		request(app)
-		.put("/api/Programa/" + id)
+		.put("/api/programa/" + id)
 		.send({nombre: 'Prueba Mocha Edit'})
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
@@ -340,7 +315,7 @@ describe('Programa', function () {
 
 	it('DELETE / Programa', function(done){
 		request(app)
-		.delete("/api/Programa/" + id)
+		.delete("/api/programa/" + id)
 		.set('Authorization', 'Bearer ' + token)
 		.expect(HttpStatus.OK)
 		.end(function(err, res){

@@ -25,7 +25,7 @@ router.post('/', middleware.ensureAuthenticated, function(req, res, next){
 
 	programa.save(function(err, item){
 		if(err){return next(err)}	
-		res.status(HttpStatus.CREATED).send({message: "Programa creada correctamente"});
+		res.status(HttpStatus.CREATED).send({message: "Programa creada correctamente", id: item._id});
 	}) 
 })
 
